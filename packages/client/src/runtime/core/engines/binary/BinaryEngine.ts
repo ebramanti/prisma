@@ -205,11 +205,13 @@ You may have to run ${green('prisma generate')} for your changes to take effect.
     if (engines.length >= 10) {
       const runningEngines = engines.filter((e) => e.child)
       if (runningEngines.length === 10) {
-        console.warn(
-          `${bold(
+        this.logEmitter.emit('warn', {
+          message: `${bold(
             yellow('warn(prisma-client)'),
           )} This is the 10th instance of Prisma Client being started. Make sure this is intentional.`,
-        )
+          timestamp: new Date(),
+          target: '',
+        })
       }
     }
   }

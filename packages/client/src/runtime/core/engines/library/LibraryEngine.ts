@@ -117,11 +117,13 @@ export class LibraryEngine extends Engine<undefined> {
 
   private checkForTooManyEngines() {
     if (engineInstanceCount === 10) {
-      console.warn(
-        `${yellow(
+      this.logEmitter.emit('warn', {
+        message: `${yellow(
           'warn(prisma-client)',
         )} This is the 10th instance of Prisma Client being started. Make sure this is intentional.`,
-      )
+        timestamp: new Date(),
+        target: '',
+      })
     }
   }
 
